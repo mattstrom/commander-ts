@@ -1,0 +1,29 @@
+{
+  "name": "commander-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matt Strom",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^2.14.1"
+  },
+  "peerDependencies": {
+    "reflect-metadata": "^0.1.12"
+  },
+  "devDependencies": {
+    "@types/node": "^9.4.6",
+    "gulp": "^3.9.1",
+    "gulpclass": "^0.1.2",
+    "reflect-metadata": "^0.1.12",
+    "rimraf": "^2.6.2",
+    "ts-node": "^4.1.0",
+    "tslint": "^5.9.1",
+    "typescript": "^2.7.2"
+  }
+}
