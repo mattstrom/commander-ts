@@ -1,3 +1,2 @@
 import 'reflect-metadata';
-
-import './program';
+export * from './decorators';
