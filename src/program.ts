@@ -1,9 +1,9 @@
 import {
 	action, command, commandOption, description, option,
 	optionalArg, program, requiredArg, usage,
-	variadicArg, version
+	variadicArg, version,
+	Command
 } from './index';
-import { Command } from 'commander';
 
 @program()
 @version('1.0.0')
@@ -15,20 +15,20 @@ export class Program {
 
 	constructor() {}
 
-	run(@requiredArg('type') type) {
-		console.log('here with ' + type);
+	run(@requiredArg('message') message) {
+		console.log(`Message: ${message}`);
 	}
 
 	@command()
-	@commandOption('--lowercase')
+	@commandOption('--reverse')
 	print(
 		this: Command,
 		@requiredArg('first') first,
 		@optionalArg('last') last,
 		@variadicArg('credentials') credentials
 	) {
-		if (this.lowercase) {
-			console.log(`Name: ${first} ${last}, ${credentials.join(', ')}`.toLowerCase());
+		if (this.reverse) {
+			console.log(`Name: ${last}, ${first}, ${credentials.join(', ')}`);
 		} else {
 			console.log(`Name: ${first} ${last}, ${credentials.join(', ')}`);
 		}
