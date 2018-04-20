@@ -1,8 +1,10 @@
 import * as commander from 'commander';
 
-import { initCommander } from '../helpers';
-import { ProgramMetadata } from '../metadata';
+import { initCommander, prepareCommand, injectArgs } from '../helpers';
+import { ProgramMetadata, OptionsMetadata } from '../metadata';
+import { Option } from '../models';
 
+import CommandStatic = commander.CommanderStatic;
 
 let instances = 0;
 
@@ -20,10 +22,35 @@ export function program() {
 			constructor(...args: any[]) {
 				super(...args);
 
+				if (!this.run) {
+					console.error('Program class must define a run() method.');
+					process.exit(1);
+				}
+
+				const cmd = prepareCommand(this, 'run');
+
+				if (cmd) {
+					commander.command(cmd);
+				}
+
+				const options: Option[] = Object.keys(this).reduce((list, prop) => {
+					if (Reflect.hasMetadata(OptionsMetadata, this, prop)) {
+						const metadata = Reflect.getMetadata(OptionsMetadata, this, prop);
+						list.push(metadata);
+					}
+
+					return list;
+				}, []);
+
+				const chainAfterOptions = options
+					.reduce((prev, option: Option) => {
+						return prev.option.apply(prev, option[0].args);
+					}, commander);
+
 				commander.parse(process.argv);
 
 				if (this.run) {
-					this.run();
+					this.run.apply(commander, injectArgs(commander, this, 'run'));
 				}
 			}
 		};
@@ -32,4 +59,24 @@ export function program() {
 
 		return mixin;
 	} as ClassDecorator;
+}
+
+function prepareProgram(target: object) {
+	let argList = '';
+
+	if (Reflect.hasMetadata(OptionsMetadata, target)) {
+		const args = Reflect.getMetadata(OptionsMetadata, target);
+
+
+
+		argList = args
+			.map((arg) => {
+				return arg.toString();
+			})
+			.join(' ')
+			.replace(/^(.)/, ' $1');
+
+	}
+
+	return `${argList}`;
 }

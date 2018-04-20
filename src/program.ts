@@ -10,10 +10,14 @@ import { Command } from 'commander';
 @description('A basic program')
 @usage('--help')
 export class Program {
-	@option('--env')
-	env: string;
+	@option('--env <env>')
+	env: string = null;
 
 	constructor() {}
+
+	run(@requiredArg('type') type) {
+		console.log('here with ' + type);
+	}
 
 	@command()
 	@commandOption('--lowercase')
@@ -29,8 +33,6 @@ export class Program {
 			console.log(`Name: ${first} ${last}, ${credentials.join(', ')}`);
 		}
 	}
-
-	run() {}
 }
 
 const p = new Program();

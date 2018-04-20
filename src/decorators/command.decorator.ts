@@ -1,5 +1,6 @@
 import * as commander from 'commander';
 
+import { prepareSubcommand } from '../helpers';
 import { ArgsMetadata, CommandOptionsMetadata } from '../metadata';
 import { CommandArg, OptionalArg, RequiredArg, VariadicArg } from '../models';
 
@@ -9,7 +10,7 @@ export type OptionArgs = [any, any, any, any];
 export function command(): MethodDecorator {
 	return (target: object, propertyKey: string | symbol, descriptor: PropertyDescriptor) => {
 		try {
-			const cmd = prepareCommand(target, propertyKey);
+			const cmd = prepareSubcommand(target, propertyKey);
 			let chain = commander.command(cmd);
 
 			if (Reflect.hasMetadata(CommandOptionsMetadata, target, propertyKey)) {
@@ -30,33 +31,4 @@ export function command(): MethodDecorator {
 			process.exit(1);
 		}
 	};
-}
-
-function collectOptions(target: object, propertyKey: string | symbol) {
-
-}
-
-function prepareCommand(target: object, propertyKey: string | symbol) {
-	let argList = '';
-
-	if (Reflect.hasMetadata(ArgsMetadata, target, propertyKey)) {
-		const args = Reflect.getMetadata(ArgsMetadata, target, propertyKey) as CommandArg[];
-
-		const predicate = (arg) => arg instanceof VariadicArg;
-		const variadic = args.find(predicate);
-
-		if (variadic && (args.findIndex(predicate) !== (args.length - 1))) {
-			throw new TypeError(`Variadic argument must be specified last the argument list of the ${propertyKey}() function.`)
-		}
-
-		argList = args
-			.map((arg) => {
-				return arg.toString();
-			})
-			.join(' ')
-			.replace(/^(.)/, ' $1');
-
-	}
-
-	return `${propertyKey}${argList}`;
 }
