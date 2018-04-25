@@ -1,15 +1,30 @@
 {
   "name": "commander-ts",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "TypeScript decorators that enhance commander",
+  "keywords": [
+    "command line",
+    "cli",
+    "commander",
+    "typescript"
+  ],
   "main": "dist/index.js",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "tsc",
     "test": "echo \"No tests yet\""
   },
-  "author": "Matt Strom",
+  "author": {
+    "name": "Matt Strom",
+    "email": "support@mattstrom.com"
+  },
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mattstrom/commander-ts"
+  },
+  "homepage": "https://github.com/mattstrom/commander-ts#readme",
+  "bugs": "https://github.com/mattstrom/commander-ts/issues",
   "dependencies": {
     "commander": "^2.14.1"
   },
