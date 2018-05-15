@@ -21,10 +21,21 @@ export function command(): MethodDecorator {
 				}, chain);
 			}
 
-			chain.action((...args) => {
+			chain.action(async (...args) => {
 				const context = args[args.length - 1];
 				const cmdArgs = args.slice(0, args.length - 1);
-				target[propertyKey].apply(context, cmdArgs);
+
+				try {
+					const result = target[propertyKey].apply(target, cmdArgs);
+
+					if (result instanceof Promise) {
+						await result;
+					}
+				} catch {
+					process.exit(1);
+				} finally {
+					process.exit(0);
+				}
 			});
 		} catch (e) {
 			console.error(e.message);
