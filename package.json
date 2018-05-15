@@ -1,6 +1,6 @@
 {
   "name": "commander-ts",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "TypeScript decorators that enhance commander",
   "keywords": [
     "command line",
@@ -9,6 +9,7 @@
     "typescript"
   ],
   "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "tsc",
@@ -31,6 +32,9 @@
   "peerDependencies": {
     "reflect-metadata": "^0.1.12"
   },
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@types/node": "^9.4.6",
     "ghooks": "^1.2.4",
