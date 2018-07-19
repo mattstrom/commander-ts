@@ -10,7 +10,7 @@ import {
 @description('A basic program')
 @usage('--help')
 export class Program {
-	@option('--env <env>')
+	@option('--env <env>', 'Set the environment')
 	env: string = null;
 
 	constructor() {}

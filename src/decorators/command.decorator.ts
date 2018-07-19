@@ -26,7 +26,7 @@ export function command(): MethodDecorator {
 				const cmdArgs = args.slice(0, args.length - 1);
 
 				try {
-					const result = target[propertyKey].apply(target, cmdArgs);
+					const result = target[propertyKey].apply(context, cmdArgs);
 
 					if (result instanceof Promise) {
 						await result;
