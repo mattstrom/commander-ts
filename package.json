@@ -1,6 +1,6 @@
 {
   "name": "commander-ts",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "TypeScript decorators that enhance commander",
   "keywords": [
     "command line",
@@ -13,6 +13,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "tsc",
+    "exec": "node dist/program.js",
     "test": "echo \"No tests yet\""
   },
   "author": {
