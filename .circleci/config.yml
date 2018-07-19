@@ -36,13 +36,13 @@ jobs:
       # run tests!
       - run: npm test
 
- publish:
-    docker:
-      - image: circleci/<language>:<version TAG>
+publish:
+  docker:
+    - image: circleci/<language>:<version TAG>
     steps:
-      - checkout
-      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-      - run: npm publish
+     - checkout
+     - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+     - run: npm publish
 
 workflows:
   version: 2
