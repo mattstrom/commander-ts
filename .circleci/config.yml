@@ -40,9 +40,9 @@ jobs:
     docker:
       - image: circleci/node:10.4.1
     steps:
-     - checkout
-     - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
-     - run: npm publish
+      - attach_workspace:
+          at: ~/repo
+      - run: npx semantic-release
 
 workflows:
   version: 2
