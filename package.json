@@ -16,6 +16,18 @@
     "exec": "node dist/program.js",
     "test": "echo \"No tests yet\""
   },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    },
+    "ghooks": {}
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "npm test"
+    }
+  },
   "author": {
     "name": "Matt Strom",
     "email": "support@mattstrom.com"
@@ -50,14 +62,12 @@
     "ghooks": "^1.2.4",
     "gulp": "^4.0.2",
     "gulpclass": "^0.2.0",
+    "husky": "^3.0.4",
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.2",
     "semantic-release": "^15.13.24",
     "ts-node": "^4.1.0",
     "tslint": "^5.9.1",
     "typescript": "^2.7.2"
-  },
-  "config": {
-    "ghooks": {}
   }
 }
