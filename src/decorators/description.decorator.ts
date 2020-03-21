@@ -1,8 +1,8 @@
 
-import * as program from 'commander';
+import { description as programDescription } from 'commander';
 
 export function description(text: string): ClassDecorator {
 	return (target: object) => {
-		program.description(text);
+		programDescription(text);
 	};
 }

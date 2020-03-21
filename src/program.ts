@@ -1,5 +1,5 @@
 import {
-	action, command, commandOption, description, option,
+	command, commandOption, description, option,
 	optionalArg, program, requiredArg, usage,
 	variadicArg, version,
 	Command
@@ -23,15 +23,11 @@ export class Program {
 	@commandOption('--reverse')
 	print(
 		this: Command,
-		@requiredArg('first') first,
-		@optionalArg('last') last,
-		@variadicArg('credentials') credentials
+		@requiredArg('first') first: string,
+		@optionalArg('last') last: string,
+		@variadicArg('credentials') credentials: Array<string>
 	) {
-		if (this.reverse) {
-			console.log(`Name: ${last}, ${first}, ${credentials.join(', ')}`);
-		} else {
-			console.log(`Name: ${first} ${last}, ${credentials.join(', ')}`);
-		}
+		console.log(`Name: ${ this.reverse ? `${last}, ${first}` : `${first} ${last}` }, ${credentials.join(', ')}`)
 	}
 }
 

@@ -1,9 +1,6 @@
-import * as commander from 'commander';
-
+import { command as commanderCommand } from 'commander'
 import { prepareSubcommand } from '../helpers';
-import { ArgsMetadata, CommandOptionsMetadata } from '../metadata';
-import { CommandArg, OptionalArg, RequiredArg, VariadicArg } from '../models';
-
+import { CommandOptionsMetadata } from '../metadata';
 
 export type OptionArgs = [any, any, any, any];
 
@@ -11,7 +8,7 @@ export function command(): MethodDecorator {
 	return (target: object, propertyKey: string | symbol, descriptor: PropertyDescriptor) => {
 		try {
 			const cmd = prepareSubcommand(target, propertyKey);
-			let chain = commander.command(cmd);
+			let chain = commanderCommand(cmd);
 
 			if (Reflect.hasMetadata(CommandOptionsMetadata, target, propertyKey)) {
 				const options = Reflect.getMetadata(CommandOptionsMetadata, target, propertyKey) as OptionArgs[];
