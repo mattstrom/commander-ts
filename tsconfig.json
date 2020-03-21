@@ -3,12 +3,12 @@
 		"declaration": true,
 		"experimentalDecorators": true,
 		"emitDecoratorMetadata": true,
-		"module": "commonjs",
+		"module": "ESNEXT",
 		"moduleResolution": "node",
 		"outDir": "dist",
 		"sourceMap": true,
-		"target": "es6",
-		"lib": ["es2016"],
+		"target": "ESNEXT",
+		"lib": ["ESNEXT"],
 		"types": [
 			"node"
 		],
