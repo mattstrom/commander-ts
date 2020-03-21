@@ -41,11 +41,7 @@ export class Program {
 		@optionalArg('last') last,
 		@variadicArg('credentials') credentials
 	) {
-		if (this.reverse) {
-			console.log(`Name: ${last}, ${first}, ${credentials.join(', ')}`);
-		} else {
-			console.log(`Name: ${first} ${last}, ${credentials.join(', ')}`);
-		}
+		console.log(`Name: ${ this.reverse ? `${last}, ${first}` : `${first} ${last}` }, ${credentials.join(', ')}`)
 	}
 }
 
