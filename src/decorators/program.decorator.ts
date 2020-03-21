@@ -1,10 +1,8 @@
 import * as commander from 'commander';
 
 import { initCommander, prepareCommand, injectArgs } from '../helpers';
-import { ProgramMetadata, OptionsMetadata } from '../metadata';
+import { OptionsMetadata } from '../metadata';
 import { Option } from '../models';
-
-import CommandStatic = commander.CommanderStatic;
 
 let instances = 0;
 
