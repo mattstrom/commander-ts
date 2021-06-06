@@ -64,7 +64,7 @@
     "gulpclass": "^0.2.0",
     "husky": "^3.0.4",
     "reflect-metadata": "^0.1.12",
-    "rimraf": "^2.6.2",
+    "rimraf": "2.7.1",
     "semantic-release": "^15.13.24",
     "ts-node": "^4.1.0",
     "tslint": "^5.9.1",
