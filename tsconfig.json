@@ -9,6 +9,7 @@
 		"sourceMap": true,
 		"target": "es6",
 		"lib": ["es2016"],
+		"skipLibCheck": true,
 		"types": [
 			"node"
 		],

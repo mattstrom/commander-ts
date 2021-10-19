@@ -9,7 +9,7 @@ export function option(flags?: string, description?: string, defaultValue?: any)
 export function option(flags?: string, description?: string, fn?: ((arg1: any, arg2: any) => void) | RegExp, defaultValue?: any): PropertyDecorator;
 export function option(...args: any[]): PropertyDecorator {
 	return ((target: object, propertyKey: string | symbol) => {
-		args[0] = args[0] || `--${propertyKey}`;
+		args[0] = args[0] || `--${String(propertyKey)}`;
 
 		decorateIfNot(OptionsMetadata, [], target, propertyKey);
 
