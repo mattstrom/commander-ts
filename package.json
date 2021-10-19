@@ -63,7 +63,7 @@
     "gulp": "^4.0.2",
     "gulpclass": "^0.2.0",
     "husky": "^3.0.4",
-    "reflect-metadata": "^0.1.12",
+    "reflect-metadata": "0.1.13",
     "rimraf": "^2.6.2",
     "semantic-release": "^15.13.24",
     "ts-node": "^10.3.0",
