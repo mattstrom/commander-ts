@@ -9,7 +9,7 @@ export function injectArgs(program, target: object, propertyKey: string | symbol
 		const variadic = args.find(predicate);
 
 		if (variadic && (args.findIndex(predicate) !== (args.length - 1))) {
-			throw new TypeError(`Variadic argument must be specified last the argument list of the ${propertyKey}() function.`)
+			throw new TypeError(`Variadic argument must be specified last the argument list of the ${String(propertyKey)}() function.`)
 		}
 
 		const argv = [];

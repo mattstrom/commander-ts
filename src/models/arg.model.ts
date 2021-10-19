@@ -8,16 +8,16 @@ export class CommandArg {
 
 export class OptionalArg extends CommandArg {
 	toString() {
-		return `[${this.name}]`;
+		return `[${String(this.name)}]`;
 	}
 }
 export class RequiredArg extends CommandArg {
 	toString() {
-		return `<${this.name}>`;
+		return `<${String(this.name)}>`;
 	}
 }
 export class VariadicArg extends CommandArg {
 	toString() {
-		return `[${this.name}...]`;
+		return `[${String(this.name)}...]`;
 	}
 }
