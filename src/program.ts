@@ -1,5 +1,5 @@
 import {
-	action, command, commandOption, description, option,
+	command, commandOption, description, option,
 	optionalArg, program, requiredArg, usage,
 	variadicArg, version,
 	Command
@@ -22,7 +22,7 @@ export class Program {
 	@command()
 	@commandOption('--reverse')
 	print(
-		this: Command,
+		this: Command & { reverse: boolean },
 		@requiredArg('first') first,
 		@optionalArg('last') last,
 		@variadicArg('credentials') credentials
