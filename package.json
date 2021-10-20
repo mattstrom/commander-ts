@@ -42,7 +42,7 @@
     "dist"
   ],
   "dependencies": {
-    "commander": "^7.2.0"
+    "commander": "^8.0.0"
   },
   "peerDependencies": {
     "reflect-metadata": "^0.1.13"
