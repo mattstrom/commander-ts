@@ -23,9 +23,9 @@ export class Program {
 	@commandOption('--reverse')
 	print(
 		this: Command & { reverse: boolean },
-		@requiredArg('first') first,
-		@optionalArg('last') last,
-		@variadicArg('credentials') credentials
+		@requiredArg('first') first: string,
+		@optionalArg('last') last: string,
+		@variadicArg('credentials') credentials: string[]
 	) {
 		if (this.reverse) {
 			console.log(`Name: ${last}, ${first}, ${credentials.join(', ')}`);

@@ -1,5 +1,3 @@
-import * as commander from 'commander';
-import { isFunction, isUndefined } from 'util';
 import { CommandOptionsMetadata } from '../metadata';
 import { decorateIfNot } from '../utils';
 
