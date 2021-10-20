@@ -1,8 +1,7 @@
 import * as commander from 'commander';
 
 import { prepareSubcommand } from '../helpers';
-import { ArgsMetadata, CommandOptionsMetadata } from '../metadata';
-import { CommandArg, OptionalArg, RequiredArg, VariadicArg } from '../models';
+import { CommandOptionsMetadata } from '../metadata';
 
 
 export type OptionArgs = [any, any, any, any];

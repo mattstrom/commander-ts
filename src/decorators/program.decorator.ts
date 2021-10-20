@@ -1,10 +1,8 @@
 import * as commander from 'commander';
 
 import { initCommander, prepareCommand, injectArgs } from '../helpers';
-import { ProgramMetadata, OptionsMetadata } from '../metadata';
+import { OptionsMetadata } from '../metadata';
 import { Option } from '../models';
-
-import CommandStatic = commander.CommanderStatic;
 
 let instances = 0;
 
@@ -15,7 +13,7 @@ export function program() {
 		throw new Error('Only one instance of @program is permitted.');
 	}
 
-	return function <R extends { new(...args: any[]): {} }>(constructor: R) {
+	return function <R extends new(...args: any[]) => {}>(constructor: R) {
 		const mixin = class extends constructor {
 			run: () => void;
 

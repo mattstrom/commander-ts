@@ -1,14 +1,9 @@
-import * as commander from 'commander';
-import { isFunction, isUndefined } from 'util';
-
 import { ArgsMetadata } from '../metadata';
 import { CommandArg, OptionalArg, RequiredArg, VariadicArg } from '../models';
 import { decorateIfNot } from '../utils';
 
 /**
  * Parameter decorator used in subcommand function to denote an optional argument.
- *
- * @param name
  */
 export function optionalArg(name: string): ParameterDecorator {
 	return (target: object, propertyKey: string | symbol, parameterIndex: number) => {
@@ -18,6 +13,9 @@ export function optionalArg(name: string): ParameterDecorator {
 	};
 }
 
+/**
+ * Parameter decorator used in subcommand function to denote a required argument.
+ */
 export function requiredArg(name: string): ParameterDecorator {
 	return (target: object, propertyKey: string | symbol, parameterIndex: number) => {
 		const args = decorateIfNot(ArgsMetadata, [], target, propertyKey);
@@ -26,6 +24,9 @@ export function requiredArg(name: string): ParameterDecorator {
 	};
 }
 
+/**
+ * Parameter decorator used in subcommand function to denote variadic arguments.
+ */
 export function variadicArg(name: string): ParameterDecorator {
 	return (target: object, propertyKey: string|symbol, parameterIndex: number) => {
 		const args = decorateIfNot(ArgsMetadata, [], target, propertyKey) as CommandArg[];

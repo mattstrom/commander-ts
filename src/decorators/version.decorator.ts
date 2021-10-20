@@ -1,4 +1,3 @@
-import * as commander from 'commander';
 import { initCommander } from '../helpers';
 import { ProgramMetadata } from '../metadata';
 
